@@ -1,0 +1,130 @@
+{
+  "status": "OK",
+  "copyright": "Copyright (c) 2022 The New York Times Company.  All Rights Reserved.",
+  "num_results": 230,
+  "results": {
+    "bestsellers_date": "2022-09-10",
+    "published_date": "2022-09-25",
+    "published_date_description": "latest",
+    "previous_published_date": "2022-09-18",
+    "next_published_date": "",
+    "lists": [
+      {
+        "list_id": 704,
+        "list_name": "Combined Print and E-Book Fiction",
+        "list_name_encoded": "combined-print-and-e-book-fiction",
+        "display_name": "Combined Print & E-Book Fiction",
+        "updated": "WEEKLY",
+        "list_image": null,
+        "list_image_width": null,
+        "list_image_height": null,
+        "books": [
+          {
+            "age_group": "",
+            "amazon_product_url": "https://www.amazon.com/dp/1668002175?tag=NYTBSREV-20",
+            "article_chapter_link": "",
+            "author": "Stephen King",
+            "book_image": "https://storage.googleapis.com/du-prd/books/images/9781668002179.jpg",
+            "book_image_width": 329,
+            "book_image_height": 500,
+            "book_review_link": "",
+            "book_uri": "nyt://book/1c203c2d-147d-5639-8e0c-009ba6f15698",
+            "contributor": "by Stephen King",
+            "contributor_note": "",
+            "created_date": "2022-09-14 22:18:27",
+            "description": "A high school kid inherits a shed that is a portal to another world where good and evil are at war.",
+            "first_chapter_link": "",
+            "price": "0.00",
+            "primary_isbn10": "1668002175",
+            "primary_isbn13": "9781668002179",
+            "publisher": "Scribner",
+            "rank": 1,
+            "rank_last_week": 0,
+            "sunday_review_link": "",
+            "title": "FAIRY TALE",
+            "updated_date": "2022-09-14 23:26:43",
+            "weeks_on_list": 1,
+            "buy_links": [
+              {
+                "name": "Amazon",
+                "url": "https://www.amazon.com/dp/1668002175?tag=NYTBSREV-20"
+              },
+              {
+                "name": "Apple Books",
+                "url": "https://goto.applebooks.apple/9781668002179?at=10lIEQ"
+              },
+              {
+                "name": "Barnes and Noble",
+                "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668002179"
+              },
+              {
+                "name": "Books-A-Million",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fp%252FFAIRY%252BTALE%252FStephen%252BKing%252F9781668002179&url2=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fsearch%253Fquery%253DFAIRY%252BTALE%252BStephen%252BKing"
+              },
+              {
+                "name": "Bookshop",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fbookshop.org%2Fa%2F3546%2F9781668002179&url2=https%3A%2F%2Fbookshop.org%2Fbooks%3Faffiliate%3D3546%26keywords%3DFAIRY%2BTALE"
+              },
+              {
+                "name": "IndieBound",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.indiebound.org%2Fbook%2F9781668002179%3Faff%3DNYT&url2=https%3A%2F%2Fwww.indiebound.org%2Fsearch%2Fbook%3Fkeys%3DFAIRY%2BTALE%2BStephen%2BKing%26aff%3DNYT"
+              }
+            ]
+          },
+          {
+            "age_group": "",
+            "amazon_product_url": "https://www.amazon.com/dp/1250278236?tag=NYTBSREV-20",
+            "article_chapter_link": "",
+            "author": "J.D. Robb",
+            "book_image": "https://storage.googleapis.com/du-prd/books/images/9781250278234.jpg",
+            "book_image_width": 329,
+            "book_image_height": 500,
+            "book_review_link": "",
+            "book_uri": "nyt://book/0fc29a7e-eab9-5483-9ae7-c8f13dde114d",
+            "contributor": "by J.D. Robb",
+            "contributor_note": "",
+            "created_date": "2022-09-14 22:18:27",
+            "description": "The 55th book of the In Death series. Eve Dallas is reminded of her past as she investigates a possible sex trafficking ring.",
+            "first_chapter_link": "",
+            "price": "0.00",
+            "primary_isbn10": "1250278244",
+            "primary_isbn13": "9781250278241",
+            "publisher": "St. Martin's",
+            "rank": 2,
+            "rank_last_week": 0,
+            "sunday_review_link": "",
+            "title": "DESPERATION IN DEATH",
+            "updated_date": "2022-09-14 23:26:43",
+            "weeks_on_list": 1,
+            "buy_links": [
+              {
+                "name": "Amazon",
+                "url": "https://www.amazon.com/dp/1250278236?tag=NYTBSREV-20"
+              },
+              {
+                "name": "Apple Books",
+                "url": "https://goto.applebooks.apple/9781250278241?at=10lIEQ"
+              },
+              {
+                "name": "Barnes and Noble",
+                "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781250278241"
+              },
+              {
+                "name": "Books-A-Million",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fp%252FDESPERATION%252BIN%252BDEATH%252FJ.D.%252BRobb%252F9781250278241&url2=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fsearch%253Fquery%253DDESPERATION%252BIN%252BDEATH%252BJ.D.%252BRobb"
+              },
+              {
+                "name": "Bookshop",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fbookshop.org%2Fa%2F3546%2F9781250278241&url2=https%3A%2F%2Fbookshop.org%2Fbooks%3Faffiliate%3D3546%26keywords%3DDESPERATION%2BIN%2BDEATH"
+              },
+              {
+                "name": "IndieBound",
+                "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.indiebound.org%2Fbook%2F9781250278241%3Faff%3DNYT&url2=https%3A%2F%2Fwww.indiebound.org%2Fsearch%2Fbook%3Fkeys%3DDESPERATION%2BIN%2BDEATH%2BJ.D.%2BRobb%26aff%3DNYT"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
