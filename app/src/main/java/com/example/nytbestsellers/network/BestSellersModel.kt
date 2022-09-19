@@ -2,7 +2,7 @@ package com.example.nytbestsellers.network
 
 import com.squareup.moshi.Json
 
-data class BestSellersFullOverview(
+data class BestSellersModel(
     val results: Results
 )
 

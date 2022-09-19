@@ -1,2 +1,46 @@
 package com.example.nytbestsellers.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+
+private const val BASE_URL = " https://api.nytimes.com/svc/books/v3/"
+
+val me = "https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=JnWB7A1lQB36grwosZxd5A5eAN1T6Jkj"
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .client(
+        OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val url = chain
+                    .request()
+                    .url()
+                    .newBuilder()
+                    .addQueryParameter("api-key", "JnWB7A1lQB36grwosZxd5A5eAN1T6Jkj")
+                    .build()
+                chain.proceed(chain.request().newBuilder().url(url).build())
+            }
+            .build()
+    )
+    .build()
+
+interface BestSellersApiService {
+    @GET("lists/full-overview.json")
+    suspend fun getAllBestSellersBooks(): BestSellersModel
+
+    // Return an instance of BestSellersApiService as a singleton
+    companion object BestSellersApi {
+        val retrofitService: BestSellersApiService by lazy {
+            retrofit.create(BestSellersApiService::class.java)
+        }
+    }
+}
