@@ -13,4 +13,5 @@
     <string name="weeks_on_list">Weeks on List</string>
     <string name="none">" "</string>
     <string name="list_name">List Name</string>
+    <string name="contributor">Contributor</string>
 </resources>

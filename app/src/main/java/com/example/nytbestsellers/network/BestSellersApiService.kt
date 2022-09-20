@@ -9,8 +9,6 @@ import retrofit2.http.GET
 
 private const val BASE_URL = " https://api.nytimes.com/svc/books/v3/"
 
-val me = "https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=JnWB7A1lQB36grwosZxd5A5eAN1T6Jkj"
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

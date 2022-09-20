@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nytbestsellers.databinding.ParentViewholderBinding
+import com.example.nytbestsellers.databinding.ListsViewHolderBinding
 import com.example.nytbestsellers.network.Lists
 
-class ParentAdapter(private val parentFragment: Fragment) :
-    RecyclerView.Adapter<ParentAdapter.DataViewHolder>() {
+class BestSellersListsAdapter(private val parentFragment: Fragment) :
+    RecyclerView.Adapter<BestSellersListsAdapter.DataViewHolder>() {
 
     private var bestSellersList: List<Lists>? = ArrayList()
 
-    class DataViewHolder(binding: ParentViewholderBinding) : RecyclerView.ViewHolder(binding.root) {
+    class DataViewHolder(binding: ListsViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         val listName = binding.listNameTextView
-        val childRecyclerView = binding.childRecyclerView
+        val booksRecyclerView = binding.booksRecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder(
-            ParentViewholderBinding.inflate(
+            ListsViewHolderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -36,10 +36,10 @@ class ParentAdapter(private val parentFragment: Fragment) :
 
         holder.listName.text = bestSellersLists.displayName
 
-        val childAdapter = ChildAdapter(bestSellersLists.books, parentFragment)
-        holder.childRecyclerView.layoutManager =
+        val bestSellersBooksAdapter = BestSellersBooksAdapter(bestSellersLists.books, parentFragment)
+        holder.booksRecyclerView.layoutManager =
             LinearLayoutManager(parentFragment.context, LinearLayoutManager.HORIZONTAL, false)
-        holder.childRecyclerView.adapter = childAdapter
+        holder.booksRecyclerView.adapter = bestSellersBooksAdapter
     }
 
     override fun getItemCount(): Int = bestSellersList?.size ?: 0

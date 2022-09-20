@@ -5,21 +5,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.nytbestsellers.databinding.ChildViewHolderBinding
+import com.example.nytbestsellers.databinding.BooksViewHolderBinding
 import com.example.nytbestsellers.network.Books
 
-class ChildAdapter(private val books: List<Books>, private val parentFragment: Fragment) :
-    RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
+class BestSellersBooksAdapter(private val books: List<Books>, private val parentFragment: Fragment) :
+    RecyclerView.Adapter<BestSellersBooksAdapter.ViewHolder>() {
 
-    class ViewHolder(binding: ChildViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: BooksViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         val imageCover = binding.bookImageView
         val title = binding.titleTextView
-        val author = binding.authorTextView
+        val contributor = binding.contributorTextView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ChildViewHolderBinding.inflate(
+            BooksViewHolderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -36,7 +36,7 @@ class ChildAdapter(private val books: List<Books>, private val parentFragment: F
             .into(holder.imageCover)
 
         holder.title.text = book.title
-        holder.author.text = book.contributor
+        holder.contributor.text = book.contributor
 
     }
 
