@@ -11,13 +11,16 @@ data class Results(
 )
 
 data class Lists(
-    val list_name: String,
+    @Json(name = "display_name")val displayName: String,
     val books: List<Books>
 )
 
 data class Books(
     val author: String,
     @Json(name = "book_image") val bookImage: String,
+    @Json(name = "book_image_width") val imageWidth: Int,
+    @Json(name = "book_image_height") val imageHeight: Int,
+    val contributor: String,
     val description: String,
     val publisher: String,
     val rank: Int,

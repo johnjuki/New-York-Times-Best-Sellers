@@ -3,19 +3,18 @@ package com.example.nytbestsellers.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nytbestsellers.databinding.BestSellersViewHolderBinding
-import com.example.nytbestsellers.network.Books
+import com.example.nytbestsellers.network.Lists
 
-class BestSellersAdapter(private var bestSellersList: List<Books>?, private  val parentFragment: Fragment) :
+class BestSellersAdapter(private var bestSellersList: List<Lists>?, private  val parentFragment: Fragment) :
     RecyclerView.Adapter<BestSellersAdapter.ViewHolder>() {
 
     class ViewHolder(binding: BestSellersViewHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val imageCover: ImageView = binding.bookImageView
+        val imageCover = binding.bookImageView
         val title = binding.titleTextView
         val author = binding.authorTextView
         val publisher = binding.descriptionTextView
@@ -32,26 +31,46 @@ class BestSellersAdapter(private var bestSellersList: List<Books>?, private  val
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bestSellersDetails = bestSellersList ?: return
 
-        val book = bestSellersDetails[position]
+        val booksList = bestSellersDetails[position]
 
-        Glide.with(parentFragment)
-            .load(book.bookImage)
-            .into(holder.imageCover)
 
-        holder.title.text = book.title
-        holder.author.text = book.author
-        holder.publisher.text = book.publisher
-        holder.description.text = book.description
-        holder.lastRankWeek.text = book.rankLastWeek.toString()
-        holder.weeksOnList.text = book.weeksOnList.toString()
+        for (j in listOf(booksList)) {
+            Glide.with(parentFragment)
+                .load(j.books[position].bookImage)
+                .into(holder.imageCover)
+
+            holder.title.text = j.books[position].title
+            holder.author.text = j.books[position].author
+            holder.publisher.text = j.books[position].publisher
+            holder.description.text = j.books[position].description
+            holder.lastRankWeek.text = j.books[position].rankLastWeek.toString()
+            holder.weeksOnList.text = j.books[position].weeksOnList.toString()
+
+        }
+
+
     }
 
     override fun getItemCount(): Int {
-        return bestSellersList?.size ?: 0
+        val notNullBestSellers = mutableListOf<List<Lists>>()
+
+        var size = 0
+
+        if (bestSellersList?.size != 0) {
+            bestSellersList?.let { notNullBestSellers.add(it) }
+        }
+
+        for ( i in notNullBestSellers) {
+            for (j in i) {
+                size = j.books.size
+            }
+        }
+
+        return size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setBestSellersData(bestSellersData: List<Books>) {
+    fun setBestSellersData(bestSellersData: List<Lists>) {
         bestSellersList = bestSellersData
         notifyDataSetChanged()
     }

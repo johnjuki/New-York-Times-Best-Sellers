@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nytbestsellers.adapter.BestSellersAdapter
+import com.example.nytbestsellers.adapter.ParentAdapter
 import com.example.nytbestsellers.databinding.FragmentHomeBinding
 import com.example.nytbestsellers.viewmodel.MainViewModel
 
@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var bestSellersAdapter: BestSellersAdapter
+    private lateinit var parentAdapter: ParentAdapter
 
 
     override fun onCreateView(
@@ -27,9 +27,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val layoutManager = LinearLayoutManager(requireContext())
-        binding.bestSellersRecyclerView.layoutManager = layoutManager
-        bestSellersAdapter = BestSellersAdapter(null, this)
-        binding.bestSellersRecyclerView.adapter = bestSellersAdapter
+        binding.parentRecyclerView.layoutManager = layoutManager
+        parentAdapter = ParentAdapter(this)
+        binding.parentRecyclerView.adapter = parentAdapter
 
         return binding.root
     }
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.status.observe(viewLifecycleOwner) {
-            bestSellersAdapter.setBestSellersData(it)
+            parentAdapter.addData(it)
         }
     }
 

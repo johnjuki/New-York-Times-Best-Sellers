@@ -7,17 +7,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nytbestsellers.network.BestSellersApiService
 import com.example.nytbestsellers.network.BestSellersModel
-import com.example.nytbestsellers.network.Books
 import com.example.nytbestsellers.network.Lists
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
-    private val _status = MutableLiveData<List<Books>>()
+    private val _status = MutableLiveData<List<Lists>>()
 
     // The external immutable LiveData for the request status
-    val status: LiveData<List<Books>> = _status
+    val status: LiveData<List<Lists>> = _status
 
 
     /**
@@ -37,23 +36,25 @@ class MainViewModel: ViewModel() {
                 val listsList = mutableListOf<List<Lists>>()
                 listsList.add(result.results.lists)
 
-                val booksList = mutableListOf<List<Books>>()
+//                val booksList = mutableListOf<List<Books>>()
+
+                val theLists = mutableListOf<Lists>()
 
                 for (i in listsList) {
                     for (j in i) {
-                        booksList.add(j.books)
+                        theLists.add(j)
                     }
                 }
 
-                val books = mutableListOf<Books>()
+//                val books = mutableListOf<Books>()
 
-                for (i in booksList) {
-                    for (j in i) {
-                        books.add(j)
-                    }
-                }
+//                for (i in booksList) {
+//                    for (j in i) {
+//                        books.add(j)
+//                    }
+//                }
 
-                _status.value = books
+                _status.value = theLists
 
             } catch (e: Exception) {
                 Log.d("Exception", "$e")
