@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nytbestsellers.adapter.BestSellersListsAdapter
+import com.example.nytbestsellers.adapters.BestSellersListsAdapter
 import com.example.nytbestsellers.databinding.FragmentHomeBinding
 import com.example.nytbestsellers.viewmodel.MainViewModel
 
@@ -19,6 +20,16 @@ class HomeFragment : Fragment() {
 
     private lateinit var bestSellersListsAdapter: BestSellersListsAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +48,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.status.observe(viewLifecycleOwner) {
+        viewModel.bestSellersLists.observe(viewLifecycleOwner) {
             bestSellersListsAdapter.addData(it)
         }
     }

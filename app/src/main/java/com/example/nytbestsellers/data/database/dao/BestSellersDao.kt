@@ -4,8 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.nytbestsellers.network.Lists
+import com.example.nytbestsellers.data.models.Lists
 
+// TODO: Delete a record from the database when its no longer in the list
 @Dao
 interface BestSellersDao {
     @Query("SELECT * FROM lists_table")

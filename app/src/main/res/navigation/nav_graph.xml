@@ -8,5 +8,35 @@
         android:id="@+id/homeFragment2"
         android:name="com.example.nytbestsellers.ui.screens.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_booksByListFragment"
+            app:destination="@id/booksByListFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_bookDetailsFragment2"
+            app:destination="@id/bookDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/booksByListFragment"
+        android:name="com.example.nytbestsellers.ui.screens.BooksByListFragment"
+        android:label="fragment_books_by_list"
+        tools:layout="@layout/fragment_books_by_list">
+        <argument android:name="booksArgument"
+            app:argType="com.example.nytbestsellers.data.models.Books[]"/>
+        <argument
+            android:name="listNameArg"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_booksByListFragment_to_bookDetailsFragment2"
+            app:destination="@id/bookDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailsFragment2"
+        android:name="com.example.nytbestsellers.ui.screens.BookDetailsFragment"
+        android:label="fragment_book_details"
+        tools:layout="@layout/fragment_book_details" >
+        <argument
+            android:name="bookArgument"
+            app:argType="com.example.nytbestsellers.data.models.Books" />
+    </fragment>
 </navigation>

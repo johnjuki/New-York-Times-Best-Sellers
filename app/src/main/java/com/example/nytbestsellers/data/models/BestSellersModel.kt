@@ -1,9 +1,11 @@
-package com.example.nytbestsellers.network
+package com.example.nytbestsellers.data.models
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 data class BestSellersModel(
     val results: Results
@@ -22,6 +24,7 @@ data class Lists(
 )
 
 @Entity(tableName = "books_table")
+@Parcelize
 data class Books(
     @PrimaryKey
     @ColumnInfo(name = "author") val author: String,
@@ -31,8 +34,9 @@ data class Books(
     @ColumnInfo(name = "contributor") val contributor: String,
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "publisher") val publisher: String,
+    @ColumnInfo(name = "isbn10") @Json(name = "primary_isbn10") val isbn: String,
     @ColumnInfo(name = "rank") val rank: Int,
     @ColumnInfo(name = "rank_last_week") @Json(name = "rank_last_week") val rankLastWeek: Int,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "weeks_on_list") @Json(name = "weeks_on_list") val weeksOnList: Int,
-)
+) : Parcelable

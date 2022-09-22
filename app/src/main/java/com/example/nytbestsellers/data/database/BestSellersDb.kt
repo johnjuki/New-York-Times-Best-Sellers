@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.nytbestsellers.converters.Converters
 import com.example.nytbestsellers.data.database.dao.BestSellersDao
-import com.example.nytbestsellers.network.Books
-import com.example.nytbestsellers.network.Lists
+import com.example.nytbestsellers.data.models.Books
+import com.example.nytbestsellers.data.models.Lists
 import com.example.nytbestsellers.utils.GsonParser
 import com.google.gson.Gson
 
 @TypeConverters(Converters::class)
-@Database(entities = [Lists::class, Books::class], version = 4, exportSchema = false)
+@Database(entities = [Lists::class, Books::class], version = 5, exportSchema = false)
 abstract class BestSellersDb : RoomDatabase() {
 
     abstract val bestSellersDao: BestSellersDao

@@ -2,7 +2,7 @@ package com.example.nytbestsellers.converters
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.example.nytbestsellers.network.Books
+import com.example.nytbestsellers.data.models.Books
 import com.example.nytbestsellers.utils.JsonParser
 import com.google.gson.reflect.TypeToken
 

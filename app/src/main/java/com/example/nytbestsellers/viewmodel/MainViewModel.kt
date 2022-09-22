@@ -8,9 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.nytbestsellers.BestSellersApplication
 import com.example.nytbestsellers.data.database.BestSellersDb
 import com.example.nytbestsellers.data.database.dao.BestSellersDao
-import com.example.nytbestsellers.network.BestSellersApiService
-import com.example.nytbestsellers.network.BestSellersModel
-import com.example.nytbestsellers.network.Lists
+import com.example.nytbestsellers.data.models.Lists
+import com.example.nytbestsellers.data.network.BestSellersApiService
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.ConnectException
@@ -18,10 +17,14 @@ import java.net.UnknownHostException
 
 class MainViewModel : ViewModel() {
     // The internal MutableLiveData that stores the status of the most recent request
-    private val _status = MutableLiveData<List<Lists>>()
+    private val _bestSellersLists = MutableLiveData<List<Lists>>()
 
     // The external immutable LiveData for the request status
-    val status: LiveData<List<Lists>> = _status
+    val bestSellersLists: LiveData<List<Lists>> = _bestSellersLists
+
+    private val _bookDescription = MutableLiveData<String>()
+
+    val bookDescription: LiveData<String> = _bookDescription
 
     private lateinit var bestSellersDao: BestSellersDao
 
@@ -56,7 +59,7 @@ class MainViewModel : ViewModel() {
 
             // Singe Source Of Truth: Room Database
 
-            _status.value = bestSellersDao.getAllLists()
+            _bestSellersLists.value = bestSellersDao.getAllLists()
 
         }
     }
@@ -64,8 +67,6 @@ class MainViewModel : ViewModel() {
     // Update the database with data from NYT Best Sellers Books API
     private suspend fun refreshCache() {
         val result = BestSellersApiService.retrofitService.getAllBestSellersBooks()
-        val resultList = mutableListOf<BestSellersModel>()
-        resultList.add(result)
 
         val listsList = mutableListOf<List<Lists>>()
         listsList.add(result.results.lists)
@@ -80,6 +81,19 @@ class MainViewModel : ViewModel() {
         }
 
         bestSellersDao.addLists(theLists)
+    }
+
+    fun getTheBookDescription(url: String) {
+        viewModelScope.launch {
+            try {
+                val result = BestSellersApiService.retrofitService.getBookDescription(url)
+                Log.d("GoogleBooks", "$result")
+                _bookDescription.value = result.items.first().volumeInfo.description
+            } catch (e: Exception) {
+                Log.d("GoogleBooksException","$e")
+            }
+
+        }
     }
 
 }

@@ -14,4 +14,6 @@
     <string name="none">" "</string>
     <string name="list_name">List Name</string>
     <string name="contributor">Contributor</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="overview">Overview</string>
 </resources>

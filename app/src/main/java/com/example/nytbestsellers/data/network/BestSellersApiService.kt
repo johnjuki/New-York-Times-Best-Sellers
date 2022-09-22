@@ -1,11 +1,15 @@
-package com.example.nytbestsellers.network
+package com.example.nytbestsellers.data.network
 
+import com.example.nytbestsellers.data.models.BestSellersModel
+import com.example.nytbestsellers.data.models.GoogleBooksModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Url
 
 private const val BASE_URL = " https://api.nytimes.com/svc/books/v3/"
 
@@ -18,10 +22,11 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .client(
         OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor())
             .addInterceptor { chain ->
                 val url = chain
                     .request()
-                    .url()
+                    .url
                     .newBuilder()
                     .addQueryParameter("api-key", "JnWB7A1lQB36grwosZxd5A5eAN1T6Jkj")
                     .build()
@@ -34,6 +39,9 @@ private val retrofit = Retrofit.Builder()
 interface BestSellersApiService {
     @GET("lists/full-overview.json")
     suspend fun getAllBestSellersBooks(): BestSellersModel
+
+    @GET
+    suspend fun getBookDescription(@Url url: String) : GoogleBooksModel
 
     // Return an instance of BestSellersApiService as a singleton
     companion object BestSellersApi {
