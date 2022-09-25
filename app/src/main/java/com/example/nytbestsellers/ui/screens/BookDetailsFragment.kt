@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
+import com.example.nytbestsellers.R
 import com.example.nytbestsellers.data.models.Books
 import com.example.nytbestsellers.databinding.FragmentBookDetailsBinding
 import com.example.nytbestsellers.viewmodel.MainViewModel
@@ -26,8 +27,6 @@ class BookDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar!!.show()
 
         bookDetails = args.bookArgument
 
@@ -47,12 +46,17 @@ class BookDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.topToolBar.title = bookDetails.title
+        binding.topToolBar.setNavigationOnClickListener { this.findNavController().navigateUp() }
+
         Glide.with(this)
             .load(bookDetails.bookImage)
+            .placeholder(R.drawable.placeholder)
             .into(binding.bookImageView)
 
         binding.titleTextView.text = bookDetails.title
         binding.contributorTextView.text = bookDetails.contributor
+        binding.publisherTextView.text = bookDetails.publisher
 
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val editor = sharedPref.edit()

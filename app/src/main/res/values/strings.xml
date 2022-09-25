@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">NYT Best Sellers</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">The New York Times Best Sellers</string>
     <string name="best_sellers">New York Times Best Sellers</string>
     <string name="book_cover_image">Book Cover Image</string>
     <string name="title">Title</string>
@@ -16,4 +14,5 @@
     <string name="contributor">Contributor</string>
     <string name="synopsis">Synopsis</string>
     <string name="overview">Overview</string>
+    <string name="see_all">see all</string>
 </resources>

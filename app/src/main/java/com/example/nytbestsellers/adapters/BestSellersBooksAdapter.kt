@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.nytbestsellers.R
 import com.example.nytbestsellers.data.models.Books
 import com.example.nytbestsellers.databinding.BooksViewHolderBinding
 import com.example.nytbestsellers.utils.BooksClickListener
@@ -43,6 +44,7 @@ class BestSellersBooksAdapter(
 
         Glide.with(parentFragment)
             .load(book.bookImage)
+            .placeholder(R.drawable.placeholder)
             .override(book.imageWidth, book.imageHeight)
             .into(holder.imageCover)
 

@@ -8,11 +8,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/booksCardView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
         android:clickable="true"
-        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +28,9 @@
 
             <ImageView
                 android:id="@+id/bookImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/book_cover_image"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -42,14 +44,19 @@
                     android:id="@+id/titleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/title" />
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/title"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/contributorTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:text="@string/contributor" />
 
             </LinearLayout>

@@ -19,6 +19,7 @@ class BestSellersListsAdapter(private val parentFragment: Fragment) :
 
     class DataViewHolder(binding: ListsViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         val listName = binding.listNameTextView
+        val seeAll = binding.seeAllTextView
         val booksRecyclerView = binding.booksRecyclerView
     }
 
@@ -41,14 +42,14 @@ class BestSellersListsAdapter(private val parentFragment: Fragment) :
 
         holder.listName.text = listName
 
-        holder.listName.setOnClickListener {
-            parentFragment.findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragment2ToBooksByListFragment(
-                    bestSellersLists.books.toTypedArray(),
-                    listName
-                )
-            )
-        }
+        val actions = HomeFragmentDirections.actionHomeFragment2ToBooksByListFragment(
+            bestSellersLists.books.toTypedArray(),
+            listName
+        )
+
+        holder.listName.setOnClickListener { parentFragment.findNavController().navigate(actions) }
+
+        holder.seeAll.setOnClickListener { parentFragment.findNavController().navigate(actions) }
 
         val bestSellersBooksAdapter =
             BestSellersBooksAdapter(
@@ -60,6 +61,7 @@ class BestSellersListsAdapter(private val parentFragment: Fragment) :
                     )
                 }
             )
+        bestSellersBooksAdapter.stateRestorationPolicy = StateRestorationPolicy.ALLOW
         holder.booksRecyclerView.layoutManager =
             LinearLayoutManager(parentFragment.context, LinearLayoutManager.HORIZONTAL, false)
         holder.booksRecyclerView.adapter = bestSellersBooksAdapter
