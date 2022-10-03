@@ -20,8 +20,6 @@ class BestSellersBooksAdapter(
     class ViewHolder(binding: BooksViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         val bookCard = binding.booksCardView
         val imageCover = binding.bookImageView
-        val title = binding.titleTextView
-        val contributor = binding.contributorTextView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,10 +45,6 @@ class BestSellersBooksAdapter(
             .placeholder(R.drawable.placeholder)
             .override(book.imageWidth, book.imageHeight)
             .into(holder.imageCover)
-
-        holder.title.text = book.title
-        holder.contributor.text = book.contributor
-
     }
 
     override fun getItemCount() = books.size

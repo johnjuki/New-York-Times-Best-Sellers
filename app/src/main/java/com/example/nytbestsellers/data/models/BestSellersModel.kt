@@ -17,7 +17,7 @@ data class Results(
 
 @Entity(tableName = "lists_table")
 data class Lists(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "display_name")
     @Json(name = "display_name") val displayName: String,
     val books: List<Books>
@@ -26,7 +26,7 @@ data class Lists(
 @Entity(tableName = "books_table")
 @Parcelize
 data class Books(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "author") val author: String,
     @ColumnInfo(name = "book_image") @Json(name = "book_image") val bookImage: String,
     @ColumnInfo(name = "width") @Json(name = "book_image_width") val imageWidth: Int,

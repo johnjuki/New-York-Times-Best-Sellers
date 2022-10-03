@@ -87,7 +87,6 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val result = BestSellersApiService.retrofitService.getBookDescription(url)
-                Log.d("GoogleBooks", "$result")
                 _bookDescription.value = result.items.first().volumeInfo.description
             } catch (e: Exception) {
                 Log.d("GoogleBooksException","$e")
