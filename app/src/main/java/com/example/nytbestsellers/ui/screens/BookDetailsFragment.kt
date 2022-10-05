@@ -56,7 +56,7 @@ class BookDetailsFragment : Fragment() {
 
         binding.titleTextView.text = bookDetails.title
         binding.contributorTextView.text = bookDetails.contributor
-        binding.publisherTextView.text = bookDetails.publisher
+//        binding.publisherTextView.text = bookDetails.publisher
 
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val editor = sharedPref.edit()

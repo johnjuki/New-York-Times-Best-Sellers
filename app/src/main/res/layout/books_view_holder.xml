@@ -10,7 +10,7 @@
         android:id="@+id/booksCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="6dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:clickable="true"
@@ -30,6 +30,7 @@
                 android:id="@+id/bookImageView"
                 android:layout_width="106dp"
                 android:layout_height="165dp"
+                android:scaleType="fitXY"
                 android:contentDescription="@string/book_cover_image"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 

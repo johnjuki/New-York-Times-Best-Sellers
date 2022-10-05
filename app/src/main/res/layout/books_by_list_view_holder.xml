@@ -9,6 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/booksCardView"
+        android:theme="@style/Theme.BooksCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
