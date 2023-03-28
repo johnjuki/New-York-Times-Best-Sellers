@@ -2,6 +2,7 @@ package com.example.nytbestsellers.data.network
 
 import com.example.nytbestsellers.data.models.BestSellersModel
 import com.example.nytbestsellers.data.models.GoogleBooksModel
+import com.example.nytbestsellers.utils.ApiKey.NYT_API_KEY
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -28,7 +29,7 @@ private val retrofit = Retrofit.Builder()
                     .request()
                     .url
                     .newBuilder()
-                    .addQueryParameter("api-key", "JnWB7A1lQB36grwosZxd5A5eAN1T6Jkj")
+                    .addQueryParameter("api-key", NYT_API_KEY)
                     .build()
                 chain.proceed(chain.request().newBuilder().url(url).build())
             }

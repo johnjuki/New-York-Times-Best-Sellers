@@ -20,7 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/MyThemeOverlay_Toolbar"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:title="@string/app_name"
+            app:title="@string/best_sellers"
             app:titleCentered="true"/>
 
     </com.google.android.material.appbar.AppBarLayout>

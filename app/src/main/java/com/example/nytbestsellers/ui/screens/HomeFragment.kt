@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolBar.title = getString(R.string.app_name)
+        binding.toolBar.title = getString(R.string.best_sellers)
 
         viewModel.bestSellersLists.observe(viewLifecycleOwner) {
             bestSellersListsAdapter.addData(it)
