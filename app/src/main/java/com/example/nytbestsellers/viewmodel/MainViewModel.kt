@@ -57,8 +57,7 @@ class MainViewModel : ViewModel() {
 
             }
 
-            // Singe Source Of Truth: Room Database
-
+            // Single Source Of Truth: Room Database
             _bestSellersLists.value = bestSellersDao.getAllLists()
 
         }
