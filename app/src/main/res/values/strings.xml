@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NYT Best Sellers</string>
+    <string name="app_name">Reading Radar</string>
     <string name="best_sellers">New York Times Best Sellers</string>
     <string name="book_cover_image">Book Cover Image</string>
     <string name="title">Title</string>

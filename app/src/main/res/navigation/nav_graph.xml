@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment2">
     <fragment
         android:id="@+id/homeFragment2"
-        android:name="com.example.nytbestsellers.ui.screens.HomeFragment"
+        android:name="com.readingradar.android.ui.screens.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -18,11 +18,11 @@
     </fragment>
     <fragment
         android:id="@+id/booksByListFragment"
-        android:name="com.example.nytbestsellers.ui.screens.BooksByListFragment"
+        android:name="com.readingradar.android.ui.screens.BooksByListFragment"
         android:label="fragment_books_by_list"
         tools:layout="@layout/fragment_books_by_list">
         <argument android:name="booksArgument"
-            app:argType="com.example.nytbestsellers.data.models.Books[]"/>
+            app:argType="com.readingradar.android.data.models.Books[]"/>
         <argument
             android:name="listNameArg"
             app:argType="string" />
@@ -32,11 +32,11 @@
     </fragment>
     <fragment
         android:id="@+id/bookDetailsFragment2"
-        android:name="com.example.nytbestsellers.ui.screens.BookDetailsFragment"
+        android:name="com.readingradar.android.ui.screens.BookDetailsFragment"
         android:label="fragment_book_details"
         tools:layout="@layout/fragment_book_details" >
         <argument
             android:name="bookArgument"
-            app:argType="com.example.nytbestsellers.data.models.Books" />
+            app:argType="com.readingradar.android.data.models.Books" />
     </fragment>
 </navigation>
