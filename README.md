@@ -1,6 +1,6 @@
-<h1 align="center">NYT Best Sellers</h1>
+<h1 align="center">Reading Radar</h1>
 
-**NYT Best Sellers** is a [FOSS](https://en.m.wikipedia.org/wiki/Free_and_open-source_software) Android application that displays the New York Times Best Sellers list, providing users with an up-to-date ranking of the most popular books in various categories.\
+**Reading Radar** is a [FOSS](https://en.m.wikipedia.org/wiki/Free_and_open-source_software) Android application that displays the New York Times Best Sellers list, providing users with an up-to-date ranking of the most popular books in various categories.\
 The app uses [New York Times](https://developer.nytimes.com/apis) Books API to fetch the list and [Google Books](https://developers.google.com/books) API to fetch the book description.
 
 
