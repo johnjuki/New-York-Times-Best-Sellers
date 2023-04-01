@@ -5,7 +5,7 @@
     android:id="@+id/booksByListFragmentt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.BooksByListFragment">
+    tools:context="com.readingradar.android.ui.screens.BooksByListFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topAppbar"
