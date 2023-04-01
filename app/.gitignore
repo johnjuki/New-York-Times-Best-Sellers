@@ -1,3 +1,4 @@
 /build
 /google-services.json
+/release
 /src/main/java/com/example/nytbestsellers/utils/ApiKey.kt
