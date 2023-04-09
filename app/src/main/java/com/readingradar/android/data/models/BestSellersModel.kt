@@ -1,68 +1,47 @@
 package com.readingradar.android.data.models
 
-import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
 
 data class BestSellersModel(
     val results: Results
 )
 
 data class Results(
-    val lists: List<Lists>
+    val lists: List<BooksList>
 )
 
-@Entity(tableName = "lists_table")
-data class Lists(
-    @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "display_name")
-    @Json(name = "display_name") val displayName: String,
-    val books: List<Books>
+@Entity(tableName = "books_list_table")
+data class BooksList(
+    @PrimaryKey(autoGenerate = false) var id: Long? = null,
+    @ColumnInfo(name = "display_name") @Json(name = "display_name") var displayName: String = "",
+    @Ignore var books: List<Book> = listOf(),
 )
 
-@Entity(tableName = "books_table")
-@Parcelize
-data class Books(
-    @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "author") val author: String,
-    @ColumnInfo(name = "book_image") @Json(name = "book_image") val bookImage: String,
-    @ColumnInfo(name = "width") @Json(name = "book_image_width") val imageWidth: Int,
-    @ColumnInfo(name = "height") @Json(name = "book_image_height") val imageHeight: Int,
-    @ColumnInfo(name = "contributor") val contributor: String,
-    @ColumnInfo(name = "description") val description: String,
-    @ColumnInfo(name = "publisher") val publisher: String,
-    @ColumnInfo(name = "isbn10") @Json(name = "primary_isbn10") val isbn: String,
-    @ColumnInfo(name = "rank") val rank: Int,
-    @ColumnInfo(name = "rank_last_week") @Json(name = "rank_last_week") val rankLastWeek: Int,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "weeks_on_list") @Json(name = "weeks_on_list") val weeksOnList: Int,
-) : Parcelable
-
-//@Entity(tableName = "lists_table")
-//data class Lists(
-//    @PrimaryKey(autoGenerate = false)
-//    @ColumnInfo(name = "display_name")
-//    val displayName: String,
-//    val books: List<Books>
-//)
-//
-//@Entity(tableName = "books_table")
-//@Parcelize
-//data class Books(
-//    @PrimaryKey(autoGenerate = false)
-//    @ColumnInfo(name = "author") val author: String,
-//    @ColumnInfo(name = "book_image") val bookImage: String,
-//    @ColumnInfo(name = "width")  val imageWidth: Int,
-//    @ColumnInfo(name = "height") val imageHeight: Int,
-//    @ColumnInfo(name = "contributor") val contributor: String,
-//    @ColumnInfo(name = "description") val description: String,
-//    @ColumnInfo(name = "publisher") val publisher: String,
-//    @ColumnInfo(name = "isbn10") val isbn: String,
-//    @ColumnInfo(name = "rank") val rank: Int,
-//    @ColumnInfo(name = "rank_last_week") val rankLastWeek: Int,
-//    @ColumnInfo(name = "title") val title: String,
-//    @ColumnInfo(name = "weeks_on_list") val weeksOnList: Int,
-//) : Parcelable
+@Entity(
+    tableName = "books_table",
+    foreignKeys = [
+        ForeignKey(
+            entity = BooksList::class,
+            parentColumns = ["id"],
+            childColumns = ["books_list_id"],
+            onDelete = ForeignKey.CASCADE,
+        )
+    ],
+    indices = [Index("books_list_id")],
+)
+data class Book(
+    @PrimaryKey(autoGenerate = false) var author: String = "",
+    @ColumnInfo(name = "books_list_id") var booksListId: Long? = null,
+    @ColumnInfo(name = "book_image") @Json(name = "book_image") var bookImage: String = "",
+    @Json(name = "book_image_width") var imageWidth: Int = 0,
+    @Json(name = "book_image_height") var imageHeight: Int = 0,
+    var contributor: String = "",
+    var description: String = "",
+    var publisher: String = "",
+    @ColumnInfo(name = "isbn10") @Json(name = "primary_isbn10") var isbn: String = "",
+    var rank: Int = 0,
+    @ColumnInfo(name = "rank_last_week") @Json(name = "rank_last_week") var rankLastWeek: Int = 0,
+    var title: String = "",
+    @ColumnInfo(name = "weeks_on_list") @Json(name = "weeks_on_list") var weeksOnList: Int = 0,
+)

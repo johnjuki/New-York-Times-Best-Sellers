@@ -4,16 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.google.gson.Gson
-import com.readingradar.android.converters.Converters
 import com.readingradar.android.data.database.dao.RrDao
-import com.readingradar.android.data.models.Books
-import com.readingradar.android.data.models.Lists
-import com.readingradar.android.utils.GsonParser
+import com.readingradar.android.data.models.Book
+import com.readingradar.android.data.models.BooksList
 
-@TypeConverters(Converters::class)
-@Database(entities = [Lists::class, Books::class], version = 6, exportSchema = false)
+@Database(entities = [BooksList::class, Book::class], version = 7, exportSchema = false)
 abstract class RrDatabase : RoomDatabase() {
 
     abstract fun rrDao(): RrDao
@@ -35,7 +30,7 @@ abstract class RrDatabase : RoomDatabase() {
             context.applicationContext,
             RrDatabase::class.java,
             "best_sellers_database"
-        ).addTypeConverter(Converters(GsonParser(Gson()))).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration().build()
     }
 
 }

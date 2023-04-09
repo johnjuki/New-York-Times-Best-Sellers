@@ -2,7 +2,8 @@ package com.readingradar.android.data.repository
 
 import android.util.Log
 import com.readingradar.android.data.database.dao.RrDao
-import com.readingradar.android.data.models.Lists
+import com.readingradar.android.data.models.Book
+import com.readingradar.android.data.models.BooksList
 import com.readingradar.android.data.network.RrApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,7 @@ class RrRepositoryImpl @Inject constructor(
     private val rrDao: RrDao,
 ) : RrRepository {
 
-    override fun getBestSellersLists(): Flow<List<Lists>>  {
+    override fun getBestSellersLists(): Flow<List<BooksList>>  {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             try {
@@ -47,7 +48,9 @@ class RrRepositoryImpl @Inject constructor(
         return rrDao.getAllLists()
     }
 
-    override suspend fun addLists(lists: List<Lists>) = rrDao.addLists(lists)
+    override suspend fun addLists(lists: List<BooksList>) = rrDao.insertBooksListList(lists)
+
+    override suspend fun getBooks(booksListId: Long): Flow<List<Book>> = rrDao.getBooks(booksListId)
 
     override suspend fun getBookDescription(url: String): Flow<String> = flow {
         try {
@@ -60,20 +63,12 @@ class RrRepositoryImpl @Inject constructor(
 
     /** Update the database with data from the API */
     private suspend fun refreshCache() {
-        val result = rrApiService.getAllBestSellersBooks()
-
-        val listsList = mutableListOf<List<Lists>>()
-        listsList.add(result.results.lists)
-
-        val theLists = mutableListOf<Lists>()
-
-
-        for (i in listsList) {
-            for (j in i) {
-                theLists.add(j)
+        val booksListList = rrApiService.getAllBestSellersBooks().results.lists
+        rrDao.insertBooksListList(booksListList)
+        for (booksList in booksListList) {
+            for (book in booksList.books) {
+                rrDao.insertBook(book)
             }
         }
-
-        rrDao.addLists(theLists)
     }
 }
