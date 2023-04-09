@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    tools:context="com.readingradar.android.ui.screens.BookDetailsFragment">
+    android:layout_marginEnd="10dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/materialAppBar"

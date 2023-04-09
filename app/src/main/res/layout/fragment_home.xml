@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.readingradar.android.ui.screens.HomeFragment">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/materialAppBar"

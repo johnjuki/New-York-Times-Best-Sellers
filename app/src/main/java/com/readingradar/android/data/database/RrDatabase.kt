@@ -7,36 +7,33 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.readingradar.android.converters.Converters
-import com.readingradar.android.data.database.dao.BestSellersDao
+import com.readingradar.android.data.database.dao.RrDao
 import com.readingradar.android.data.models.Books
 import com.readingradar.android.data.models.Lists
 import com.readingradar.android.utils.GsonParser
 
 @TypeConverters(Converters::class)
 @Database(entities = [Lists::class, Books::class], version = 5, exportSchema = false)
-abstract class BestSellersDb : RoomDatabase() {
+abstract class RrDatabase : RoomDatabase() {
 
-    abstract val bestSellersDao: BestSellersDao
+    abstract fun rrDao(): RrDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: BestSellersDao? = null
+        private var INSTANCE: RrDatabase? = null
 
-        fun getDaoInstance(context: Context): BestSellersDao {
-            synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = buildDatabase(context).bestSellersDao
-                    INSTANCE = instance
-                }
+        fun getInstance(context: Context): RrDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = buildDatabase(context)
+                INSTANCE = instance
                 return instance
             }
         }
 
-        private fun buildDatabase(context: Context): BestSellersDb = Room.databaseBuilder(
+        private fun buildDatabase(context: Context): RrDatabase = Room.databaseBuilder(
             context.applicationContext,
-            BestSellersDb::class.java,
+            RrDatabase::class.java,
             "best_sellers_database"
         ).addTypeConverter(Converters(GsonParser(Gson()))).fallbackToDestructiveMigration().build()
     }

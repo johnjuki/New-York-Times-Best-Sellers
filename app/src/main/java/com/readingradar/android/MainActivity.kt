@@ -1,38 +1,23 @@
 package com.readingradar.android
 
 import android.os.Bundle
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
-import com.readingradar.android.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import com.readingradar.android.ui.ReadingRadarApp
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                leftMargin = insets.left
-                bottomMargin = insets.bottom
-                rightMargin = insets.right
-                topMargin = insets.top
+        setContent {
+            Surface(modifier = Modifier.fillMaxSize()) {
+                ReadingRadarApp()
             }
-
-            // Return CONSUMED if you don't want want the window insets to keep being
-            // passed down to descendant views.
-            WindowInsetsCompat.CONSUMED
         }
     }
-
 }
