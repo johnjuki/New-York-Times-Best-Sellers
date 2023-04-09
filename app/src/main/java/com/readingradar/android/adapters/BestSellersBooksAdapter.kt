@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.readingradar.android.R
 import com.readingradar.android.data.models.Books
 import com.readingradar.android.databinding.BooksViewHolderBinding
 import com.readingradar.android.utils.BooksClickListener
@@ -40,11 +38,11 @@ class BestSellersBooksAdapter(
             clickListener.onClick(book)
         }
 
-        Glide.with(parentFragment)
-            .load(book.bookImage)
-            .placeholder(R.drawable.placeholder)
-            .override(book.imageWidth, book.imageHeight)
-            .into(holder.imageCover)
+//        Glide.with(parentFragment)
+//            .load(book.bookImage)
+//            .placeholder(R.drawable.placeholder)
+//            .override(book.imageWidth, book.imageHeight)
+//            .into(holder.imageCover)
     }
 
     override fun getItemCount() = books.size

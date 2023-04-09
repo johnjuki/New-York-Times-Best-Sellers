@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.readingradar.android.data.models.Books
 import com.readingradar.android.databinding.BooksByListViewHolderBinding
 import com.readingradar.android.utils.BooksClickListener
@@ -45,10 +44,10 @@ class BooksByListAdapter(
             "Last Week: " + if (book.rankLastWeek == 0) "n/a" else book.rankLastWeek.toString()
         val weeksOnList = "Weeks on list: " + if (book.weeksOnList == 0) "n/a" else book.weeksOnList.toString()
 
-        Glide.with(parentFragment)
-            .load(book.bookImage)
-            .override(book.imageWidth, book.imageHeight)
-            .into(holder.imageCover)
+//        Glide.with(parentFragment)
+//            .load(book.bookImage)
+//            .override(book.imageWidth, book.imageHeight)
+//            .into(holder.imageCover)
 
         holder.rank.text = book.rank.toString()
         holder.title.text = book.title

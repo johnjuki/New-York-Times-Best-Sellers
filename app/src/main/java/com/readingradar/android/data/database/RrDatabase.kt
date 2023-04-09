@@ -13,7 +13,7 @@ import com.readingradar.android.data.models.Lists
 import com.readingradar.android.utils.GsonParser
 
 @TypeConverters(Converters::class)
-@Database(entities = [Lists::class, Books::class], version = 5, exportSchema = false)
+@Database(entities = [Lists::class, Books::class], version = 6, exportSchema = false)
 abstract class RrDatabase : RoomDatabase() {
 
     abstract fun rrDao(): RrDao

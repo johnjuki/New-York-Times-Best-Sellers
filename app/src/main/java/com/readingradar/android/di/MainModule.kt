@@ -51,9 +51,6 @@ object MainModule {
         .build()
 
     @Provides
-    fun provideAppContext(@ApplicationContext context: Context) = context
-
-    @Provides
     fun provideApiService(retrofit: Retrofit): RrApiService =
         retrofit.create(RrApiService::class.java)
 
