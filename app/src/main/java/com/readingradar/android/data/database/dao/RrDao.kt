@@ -15,7 +15,10 @@ interface RrDao {
     fun getBestSellersList() : Flow<List<BooksList>>
 
     @Query("SELECT * FROM books_table WHERE books_list_id = :booksListId")
-    fun getBooks(booksListId: Long) : Flow<List<Book>>
+    fun getBooks(booksListId: Int) : Flow<List<Book>>
+
+    @Query("SELECT * FROM books_table WHERE isbn10 = :isbn")
+    suspend fun getBook(isbn: String) : Book
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBooksListList(lists: List<BooksList>)

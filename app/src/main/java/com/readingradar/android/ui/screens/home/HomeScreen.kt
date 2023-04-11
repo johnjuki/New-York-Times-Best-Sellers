@@ -1,5 +1,6 @@
 package com.readingradar.android.ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -29,16 +30,21 @@ import com.readingradar.android.R
 @Composable
 fun HomeRoute(
     modifier: Modifier = Modifier,
+    onBookCoverClick: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val homeUiState by viewModel.uiState.collectAsState()
 
-    HomeScreen(homeUiState = homeUiState)
+    HomeScreen(homeUiState, onBookCoverClick)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
+fun HomeScreen(
+    homeUiState: HomeUiState,
+    onBookCoverClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val context = LocalContext.current
 
@@ -86,7 +92,7 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                                 )
                             }
                             LazyRow {
-                                items(lists.books) { book ->
+                                items(lists.books) {book ->
                                     AsyncImage(
                                         modifier = Modifier
                                             .size(width = 106.dp, height = 165.dp)
@@ -97,7 +103,8 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                                             )
                                             .semantics {
                                                 this.contentDescription = "Cover Image"
-                                            },
+                                            }
+                                            .clickable { onBookCoverClick(book.isbn) },
                                         model = ImageRequest.Builder(context)
                                             .data(book.bookImage)
                                             .placeholder(R.drawable.placeholder)

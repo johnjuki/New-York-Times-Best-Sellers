@@ -50,9 +50,11 @@ class RrRepositoryImpl @Inject constructor(
 
     override suspend fun addLists(lists: List<BooksList>) = rrDao.insertBooksListList(lists)
 
-    override suspend fun getBooks(booksListId: Long): Flow<List<Book>> = rrDao.getBooks(booksListId)
+    override fun getBooks(booksListId: Int): Flow<List<Book>> = rrDao.getBooks(booksListId)
 
-    override suspend fun getBookDescription(url: String): Flow<String> = flow {
+    override suspend fun getBook(isbn: String): Book = rrDao.getBook(isbn)
+
+    override fun getBookDescription(url: String): Flow<String> = flow {
         try {
             val result = rrApiService.getBookDescription(url)
             emit(result.items.first().volumeInfo.description)
