@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RrDao {
     @Query("SELECT * FROM books_list_table")
-    fun getAllLists() : Flow<List<BooksList>>
+    fun getBestSellersList() : Flow<List<BooksList>>
 
     @Query("SELECT * FROM books_table WHERE books_list_id = :booksListId")
     fun getBooks(booksListId: Long) : Flow<List<Book>>

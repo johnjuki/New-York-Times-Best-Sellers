@@ -14,7 +14,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(repository: RrRepository) : ViewModel() {
 
     val uiState: StateFlow<HomeUiState> =
-        repository.getBestSellersLists().map { HomeUiState.Success(it) }
+        repository.getBestSellersList().map { HomeUiState.Success(it) }
             .stateIn(
                 viewModelScope,
                 initialValue = HomeUiState.Loading,

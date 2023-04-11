@@ -21,7 +21,7 @@ class RrRepositoryImpl @Inject constructor(
     private val rrDao: RrDao,
 ) : RrRepository {
 
-    override fun getBestSellersLists(): Flow<List<BooksList>>  {
+    override fun getBestSellersList(): Flow<List<BooksList>>  {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             try {
@@ -32,7 +32,7 @@ class RrRepositoryImpl @Inject constructor(
                     is ConnectException,
                     is HttpException -> {
                         Log.d("Connection Exception", "$e")
-                        rrDao.getAllLists().onCompletion { }
+                        rrDao.getBestSellersList().onCompletion { }
                             .collect {
                                 if (it.isEmpty()) {
                                     // TODO: Prompt the user to connect to the internet
@@ -45,7 +45,7 @@ class RrRepositoryImpl @Inject constructor(
             }
         }
 
-        return rrDao.getAllLists()
+        return rrDao.getBestSellersList()
     }
 
     override suspend fun addLists(lists: List<BooksList>) = rrDao.insertBooksListList(lists)
@@ -63,7 +63,7 @@ class RrRepositoryImpl @Inject constructor(
 
     /** Update the database with data from the API */
     private suspend fun refreshCache() {
-        val booksListList = rrApiService.getAllBestSellersBooks().results.lists
+        val booksListList = rrApiService.getBestSellersList().results.lists
         rrDao.insertBooksListList(booksListList)
         for (booksList in booksListList) {
             for (book in booksList.books) {

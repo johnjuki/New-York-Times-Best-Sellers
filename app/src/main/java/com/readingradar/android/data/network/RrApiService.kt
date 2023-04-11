@@ -7,7 +7,7 @@ import retrofit2.http.Url
 
 interface RrApiService {
     @GET("lists/full-overview.json")
-    suspend fun getAllBestSellersBooks(): BestSellersModel
+    suspend fun getBestSellersList(): BestSellersModel
 
     @GET
     suspend fun getBookDescription(@Url url: String) : GoogleBooksModel
