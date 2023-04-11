@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RrRepository {
 
-    fun getBestSellersLists() : Flow<List<BooksList>>
+    fun getBestSellersList() : Flow<List<BooksList>>
 
     suspend fun addLists(lists: List<BooksList>)
 

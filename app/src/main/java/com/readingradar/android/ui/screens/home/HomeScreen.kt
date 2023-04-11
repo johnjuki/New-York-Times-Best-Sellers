@@ -17,6 +17,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -92,7 +94,10 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                                                 start = 16.dp,
                                                 top = 8.dp,
                                                 bottom = 15.dp
-                                            ),
+                                            )
+                                            .semantics {
+                                                this.contentDescription = "Cover Image"
+                                            },
                                         model = ImageRequest.Builder(context)
                                             .data(book.bookImage)
                                             .placeholder(R.drawable.placeholder)
