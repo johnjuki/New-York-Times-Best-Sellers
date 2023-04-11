@@ -20,6 +20,4 @@ class HomeViewModel @Inject constructor(repository: RrRepository) : ViewModel() 
                 initialValue = HomeUiState.Loading,
                 started = SharingStarted.WhileSubscribed(5_000),
             )
-
-
 }

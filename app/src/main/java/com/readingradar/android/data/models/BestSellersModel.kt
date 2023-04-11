@@ -15,7 +15,7 @@ data class Results(
 data class BooksList(
     @PrimaryKey(autoGenerate = false) var id: Long? = null,
     @ColumnInfo(name = "display_name") @Json(name = "display_name") var displayName: String = "",
-    @Ignore var books: List<Book> = listOf(),
+    var books: List<Book> = listOf(),
 )
 
 @Entity(
