@@ -18,6 +18,11 @@ class BookDetailsViewModel @Inject constructor(
     var uiState by mutableStateOf(BookDetailsUiState())
 
     fun getBook(isbn: String) = viewModelScope.launch {
-        uiState = uiState.copy(isLoading = false, book = repository.getBook(isbn),)
+        val book = repository.getBook(isbn)
+        uiState = uiState.copy(isLoading = false, book = book)
+        val description = repository.getBookDescription(
+            url = "https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn}",
+        )
+        uiState = uiState.copy(description = description)
     }
 }

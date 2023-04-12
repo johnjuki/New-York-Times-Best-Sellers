@@ -14,6 +14,6 @@ interface RrRepository {
 
     suspend fun getBook(isbn: String) : Book
 
-    fun getBookDescription(url: String) : Flow<String>
+    suspend fun getBookDescription(url: String) : String
 
 }
