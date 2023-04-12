@@ -16,7 +16,7 @@ class HomeScreenKtTest {
     @Test
     fun initialState_isRendered() {
         composeTestRule.setContent {
-            HomeScreen(homeUiState = HomeUiState.Loading, onBookCoverClick = {})
+            HomeScreen(homeUiState = HomeUiState.Loading, onBookImageClick = {})
         }
         composeTestRule.onNodeWithText(composeTestRule.activity.getString(R.string.loading))
             .assertIsDisplayed()
@@ -26,25 +26,25 @@ class HomeScreenKtTest {
     fun stateWithContent_isRendered() {
         val bestSellersList = DummyContent.getBestSellersList()
         composeTestRule.setContent {
-            HomeScreen(homeUiState = HomeUiState.Success(bestSellersList), onBookCoverClick = {})
+            HomeScreen(homeUiState = HomeUiState.Success(bestSellersList), onBookImageClick = {})
         }
         composeTestRule.onNodeWithText(bestSellersList[0].displayName).assertIsDisplayed()
-        composeTestRule.onAllNodesWithContentDescription("Cover Image")
+        composeTestRule.onAllNodesWithContentDescription("Book Image")
             .assertCountEquals(bestSellersList.size)
     }
 
     @Test
-    fun stateWithContent_ClickOnBookCover_isRegistered() {
+    fun stateWithContent_ClickOnBookImage_isRegistered() {
         val bestSellersList = DummyContent.getBestSellersList()
         val targetBook = bestSellersList[0]
         composeTestRule.setContent {
             HomeScreen(
                 homeUiState = HomeUiState.Success(bestSellersList),
-                onBookCoverClick = { isbn ->
+                onBookImageClick = { isbn ->
                     assert(isbn == targetBook.books[0].isbn)
                 },
             )
         }
-        composeTestRule.onAllNodesWithContentDescription("Cover Image").onFirst().performClick()
+        composeTestRule.onAllNodesWithContentDescription("Book Image").onFirst().performClick()
     }
 }

@@ -30,19 +30,19 @@ import com.readingradar.android.R
 @Composable
 fun HomeRoute(
     modifier: Modifier = Modifier,
-    onBookCoverClick: (String) -> Unit,
+    onBookImageClick: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val homeUiState by viewModel.uiState.collectAsState()
 
-    HomeScreen(homeUiState, onBookCoverClick)
+    HomeScreen(homeUiState, onBookImageClick)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     homeUiState: HomeUiState,
-    onBookCoverClick: (String) -> Unit,
+    onBookImageClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
@@ -102,9 +102,9 @@ fun HomeScreen(
                                                 bottom = 15.dp
                                             )
                                             .semantics {
-                                                this.contentDescription = "Cover Image"
+                                                this.contentDescription = "Book Image"
                                             }
-                                            .clickable { onBookCoverClick(book.isbn) },
+                                            .clickable { onBookImageClick(book.isbn) },
                                         model = ImageRequest.Builder(context)
                                             .data(book.bookImage)
                                             .placeholder(R.drawable.placeholder)

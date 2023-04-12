@@ -26,7 +26,7 @@ fun RrNavHost(
         // HOME
         composable(route = Screens.Home.route) {
             HomeRoute(
-                onBookCoverClick = { isbn ->
+                onBookImageClick = { isbn ->
                     navController.navigate(Screens.BookDetails.replaceIsbnKey(isbn))
                 },
             )
