@@ -16,6 +16,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.readingradar.android.R
+import com.readingradar.android.utils.Description
 
 @Composable
 fun BookDetailsRoute(
@@ -52,7 +55,11 @@ fun BookDetailsScreen(
             modifier = modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(
+                modifier = Modifier.semantics {
+                    this.contentDescription = Description.BOOK_DETAILS_LOADING
+                }
+            )
         }
     } else {
         val context = LocalContext.current
@@ -90,7 +97,11 @@ fun BookDetailsScreen(
                             shape = RoundedCornerShape(0.dp)
                         ) {
                             AsyncImage(
-                                modifier = Modifier.size(width = 200.dp, height = 300.dp),
+                                modifier = Modifier
+                                    .size(width = 200.dp, height = 300.dp)
+                                    .semantics {
+                                        this.contentDescription = Description.BOOK_IMAGE
+                                    },
                                 model = ImageRequest.Builder(context)
                                     .data(book.bookImage)
                                     .placeholder(R.drawable.placeholder)

@@ -54,8 +54,11 @@ class RrRepositoryImpl @Inject constructor(
     override suspend fun getBook(isbn: String): Book = rrDao.getBook(isbn)
 
     override suspend fun getBookDescription(url: String): String {
-        val result = rrApiService.getBookDescription(url)
-        return result.items.first().volumeInfo.description
+        return try {
+            rrApiService.getBookDescription(url).items.first().volumeInfo.description
+        } catch (e: Exception) {
+            ""
+        }
     }
 
     /** Update the database with data from the API */

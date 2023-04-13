@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -26,6 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.readingradar.android.R
+import com.readingradar.android.utils.Description
 
 @Composable
 fun HomeRoute(
@@ -67,7 +67,11 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Text(text = stringResource(R.string.loading))
+                        CircularProgressIndicator(
+                            modifier = Modifier.semantics {
+                                this.contentDescription = Description.BOOKS_LOADING
+                            }
+                        )
                     }
                 }
                 is HomeUiState.Success -> {
@@ -83,13 +87,6 @@ fun HomeScreen(
                                     color = Color.Gray,
                                     modifier = Modifier.padding(start = 16.dp),
                                 )
-                                Spacer(modifier = Modifier.weight(1f))
-                                Text(
-                                    text = stringResource(R.string.see_all),
-                                    fontSize = 15.sp,
-                                    color = colorResource(R.color.titleColor),
-                                    modifier = Modifier.padding(end = 16.dp),
-                                )
                             }
                             LazyRow {
                                 items(lists.books) {book ->
@@ -102,7 +99,7 @@ fun HomeScreen(
                                                 bottom = 15.dp
                                             )
                                             .semantics {
-                                                this.contentDescription = "Book Image"
+                                                this.contentDescription = Description.BOOK_IMAGE
                                             }
                                             .clickable { onBookImageClick(book.isbn) },
                                         model = ImageRequest.Builder(context)
