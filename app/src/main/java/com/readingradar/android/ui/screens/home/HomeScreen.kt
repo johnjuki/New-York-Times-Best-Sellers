@@ -1,5 +1,6 @@
 package com.readingradar.android.ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -14,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -25,20 +25,26 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.readingradar.android.R
+import com.readingradar.android.utils.Description
 
 @Composable
 fun HomeRoute(
     modifier: Modifier = Modifier,
+    onBookImageClick: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val homeUiState by viewModel.uiState.collectAsState()
 
-    HomeScreen(homeUiState = homeUiState)
+    HomeScreen(homeUiState, onBookImageClick)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
+fun HomeScreen(
+    homeUiState: HomeUiState,
+    onBookImageClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val context = LocalContext.current
 
@@ -61,7 +67,11 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Text(text = stringResource(R.string.loading))
+                        CircularProgressIndicator(
+                            modifier = Modifier.semantics {
+                                this.contentDescription = Description.BOOKS_LOADING
+                            }
+                        )
                     }
                 }
                 is HomeUiState.Success -> {
@@ -77,16 +87,9 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                                     color = Color.Gray,
                                     modifier = Modifier.padding(start = 16.dp),
                                 )
-                                Spacer(modifier = Modifier.weight(1f))
-                                Text(
-                                    text = stringResource(R.string.see_all),
-                                    fontSize = 15.sp,
-                                    color = colorResource(R.color.titleColor),
-                                    modifier = Modifier.padding(end = 16.dp),
-                                )
                             }
                             LazyRow {
-                                items(lists.books) { book ->
+                                items(lists.books) {book ->
                                     AsyncImage(
                                         modifier = Modifier
                                             .size(width = 106.dp, height = 165.dp)
@@ -96,8 +99,9 @@ fun HomeScreen(homeUiState: HomeUiState, modifier: Modifier = Modifier) {
                                                 bottom = 15.dp
                                             )
                                             .semantics {
-                                                this.contentDescription = "Cover Image"
-                                            },
+                                                this.contentDescription = Description.BOOK_IMAGE
+                                            }
+                                            .clickable { onBookImageClick(book.isbn) },
                                         model = ImageRequest.Builder(context)
                                             .data(book.bookImage)
                                             .placeholder(R.drawable.placeholder)

@@ -1,45 +1,7 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Base application theme. -->
-    <style name="Theme.NYTBestSellers" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
-        <item name="colorOnPrimary">@color/primaryLightColor</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/secondaryLightColor</item>
-        <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
-        <!-- Customize your theme here. -->
-        <!--<item name="android:windowSplashScreenBackground">@color/primaryDarkColor</item>-->
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <style name="Theme.ReadingRadar" parent="android:Theme.Material.Light.NoActionBar">
 
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:fitsSystemWindows">true</item>
-
-    </style>
-
-    <style name="MyThemeOverlay_Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="android:background">@color/white</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="navigationIconTint">@color/black</item>
-    </style>
-
-    <style name="Theme.BookTitle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/titleColor</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="Theme.BookContributor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>"
-    </style>
-
-    <style name="Theme.BooksCardView" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     </style>
 
 </resources>

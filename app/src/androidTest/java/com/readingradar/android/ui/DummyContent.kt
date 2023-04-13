@@ -8,23 +8,7 @@ object DummyContent {
         BooksList(
             id = 0,
             displayName = "Combined Print & E-Book Fiction",
-            books = arrayListOf(
-                Book(
-                    author = "Taylor Jenkins Reid",
-                    booksListId = 0,
-                    bookImage = "https://storage.googleapis.com/du-prd/books/images/9781524798628.jpg",
-                    imageWidth = 325,
-                    imageHeight = 495,
-                    contributor = "by Taylor Jenkins Reid",
-                    description = "A fictional oral history charting the rise and fall of a ’70s rock ’n’ roll band.",
-                    publisher = "Ballantine",
-                    isbn = "1524798649",
-                    rank = 1,
-                    rankLastWeek = 3,
-                    title = "DAISY JONES & THE SIX",
-                    weeksOnList = 13,
-                )
-            )
+            books = arrayListOf(book)
         ),
         BooksList(
             id = 1,
@@ -47,5 +31,21 @@ object DummyContent {
                 )
             )
         ),
+    )
+
+    val book = Book(
+        author = "Taylor Jenkins Reid",
+        booksListId = 0,
+        bookImage = "https://storage.googleapis.com/du-prd/books/images/9781524798628.jpg",
+        imageWidth = 325,
+        imageHeight = 495,
+        contributor = "by Taylor Jenkins Reid",
+        description = "A fictional oral history charting the rise and fall of a ’70s rock ’n’ roll band.",
+        publisher = "Ballantine",
+        isbn = "1524798649",
+        rank = 1,
+        rankLastWeek = 3,
+        title = "DAISY JONES & THE SIX",
+        weeksOnList = 13,
     )
 }

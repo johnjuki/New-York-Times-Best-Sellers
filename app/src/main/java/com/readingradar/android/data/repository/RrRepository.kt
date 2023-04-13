@@ -10,8 +10,10 @@ interface RrRepository {
 
     suspend fun addLists(lists: List<BooksList>)
 
-    suspend fun getBooks(booksListId: Long) : Flow<List<Book>>
+    fun getBooks(booksListId: Int) : Flow<List<Book>>
 
-    suspend fun getBookDescription(url: String) : Flow<String>
+    suspend fun getBook(isbn: String) : Book
+
+    suspend fun getBookDescription(url: String) : String
 
 }

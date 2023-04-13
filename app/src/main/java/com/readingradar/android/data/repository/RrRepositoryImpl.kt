@@ -8,7 +8,6 @@ import com.readingradar.android.data.network.RrApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -21,7 +20,7 @@ class RrRepositoryImpl @Inject constructor(
     private val rrDao: RrDao,
 ) : RrRepository {
 
-    override fun getBestSellersList(): Flow<List<BooksList>>  {
+    override fun getBestSellersList(): Flow<List<BooksList>> {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             try {
@@ -50,14 +49,15 @@ class RrRepositoryImpl @Inject constructor(
 
     override suspend fun addLists(lists: List<BooksList>) = rrDao.insertBooksListList(lists)
 
-    override suspend fun getBooks(booksListId: Long): Flow<List<Book>> = rrDao.getBooks(booksListId)
+    override fun getBooks(booksListId: Int): Flow<List<Book>> = rrDao.getBooks(booksListId)
 
-    override suspend fun getBookDescription(url: String): Flow<String> = flow {
-        try {
-            val result = rrApiService.getBookDescription(url)
-            emit(result.items.first().volumeInfo.description)
+    override suspend fun getBook(isbn: String): Book = rrDao.getBook(isbn)
+
+    override suspend fun getBookDescription(url: String): String {
+        return try {
+            rrApiService.getBookDescription(url).items.first().volumeInfo.description
         } catch (e: Exception) {
-            Log.d("GoogleBooksException", "$e")
+            ""
         }
     }
 
