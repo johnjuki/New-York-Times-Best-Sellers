@@ -6,9 +6,9 @@ The app uses [New York Times](https://developer.nytimes.com/apis) Books API to f
 
 ------
 
-| ![homedark2](https://user-images.githubusercontent.com/84154246/228127526-aebe8b90-f577-4dd6-aa1e-e68fe52217d9.png) | ![listdark](https://user-images.githubusercontent.com/84154246/228127582-3c03214c-e558-4248-8fbd-19cfbd872c82.png) | ![detailsdark](https://user-images.githubusercontent.com/84154246/228127605-86844762-593f-4a18-b31e-3b5d56cd685b.png) |
-|-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
-| ![home](https://user-images.githubusercontent.com/84154246/228127090-191b7c7b-cae1-445d-9406-17518270cda3.png) | ![list](https://user-images.githubusercontent.com/84154246/228127301-438e67c8-c32c-4f36-a8e8-4e041c8f509b.png) | ![details](https://user-images.githubusercontent.com/84154246/228127387-e5fa4dbd-476b-47aa-b1c6-49d9ee635d71.png) |
+<div align="center">
+<img src="https://user-images.githubusercontent.com/84154246/231700424-805b7c07-ddb3-4042-9481-19c8d958cad7.png" width=30% height=30%> | <img src="https://user-images.githubusercontent.com/84154246/231700820-e330efc2-5b5a-4ba2-b09e-e60dbc051b1b.png" width=30% height=30%> | <img src="https://user-images.githubusercontent.com/84154246/231700572-cb163c85-2b45-48c6-8ab3-69073c022b65.png" width=30% height=30%> 
+</div>
 
 ------
 
@@ -17,10 +17,14 @@ The app uses [New York Times](https://developer.nytimes.com/apis) Books API to f
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - To improve performance by doing I/O tasks out of main thread asynchronously.
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
+  - [Jetpack Compose](https://developer.android.com/jetpack/compose?gclsrc=ds&gclsrc=ds) - Jetpack Compose is Android’s recommended modern toolkit for building native UI
+  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) -  observable data holder class
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes
+  - [Room database](https://developer.android.com/jetpack/androidx/releases/room) - Persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and the JVM.
 - [OkHttp3](https://square.github.io/okhttp/) - OkHttp is an HTTP client for Android that’s efficient by default.
 - [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back.
-- [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling.
+- [Coil](https://coil-kt.github.io/coil/compose/) - An image loading library for Android backed by Kotlin Coroutines.
 
 ------
 
